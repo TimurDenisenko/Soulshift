@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bf54b8d0b3dd53645b9733f26bd8d287
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 20330
+  packageName: Floor Segment
+  packageVersion: v2
+  assetPath: Assets/FloorSegment/Materials/floor_segment_updated.mat
+  uploadId: 61544

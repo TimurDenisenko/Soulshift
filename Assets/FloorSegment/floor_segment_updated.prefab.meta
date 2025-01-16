@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 26096449e47058e47b7f547a8101ea61
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 20330
+  packageName: Floor Segment
+  packageVersion: v2
+  assetPath: Assets/FloorSegment/floor_segment_updated.prefab
+  uploadId: 61544
