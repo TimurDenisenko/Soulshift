@@ -1,7 +1,15 @@
 fileFormatVersion: 2
 guid: 71741600c6852d64782fe028d92ab198
+AssetOrigin:
+  serializedVersion: 1
+  productId: 258683
+  packageName: Free Demo Of Low Poly Space Alien Worlds 3D Asset Pack
+  packageVersion: 1.0.0
+  assetPath: Assets/Free Demo of Low Poly Space Alien Worlds 3D Asset Pack/Models/Space
+    Forest/SP_Plants/SP_Plant07.fbx
+  uploadId: 606181
 ModelImporter:
-  serializedVersion: 21300
+  serializedVersion: 22200
   internalIDToNameTable: []
   externalObjects: {}
   materials:
@@ -16,8 +24,6 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 1
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -35,11 +41,12 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 3
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -67,6 +74,7 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -88,7 +96,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.03
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
@@ -99,16 +107,9 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 0
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 258683
-  packageName: Free Demo Of Low Poly Space Alien Worlds 3D Asset Pack
-  packageVersion: 1.0.0
-  assetPath: Assets/Free Demo of Low Poly Space Alien Worlds 3D Asset Pack/Models/Space
-    Forest/SP_Plants/SP_Plant07.fbx
-  uploadId: 606181
