@@ -9,7 +9,8 @@ public class NPCController : MonoBehaviour
 
     [Header("General settings")]
     public Transform player;
-    public float chaseDistance = 10f; 
+    public float minDistance = 10f;
+    public float chaseDistance = 20f; 
 
     [Header("Patrol settings")]
     public Transform[] waypoints;
@@ -68,9 +69,15 @@ public class NPCController : MonoBehaviour
 
     void AggressiveBehavior()
     {
-        if (Vector3.Distance(transform.position, player.position) < chaseDistance)
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+        if (distanceToPlayer < chaseDistance && distanceToPlayer > minDistance)
         {
             agent.destination = player.position;
+        }
+        else if (distanceToPlayer <= minDistance)
+        {
+            agent.destination = transform.position;
         }
         else
         {
@@ -78,18 +85,19 @@ public class NPCController : MonoBehaviour
         }
     }
 
+
     void Patrol()
     {
         if (waypoints.Length == 0)
             return;
+        if (isWaiting)
+        {
+            Invoke(nameof(DisableWaiting), transitionDelay);
+            return;
+        }
         agent.destination = waypoints[currentWaypoint].position; 
         if (!agent.pathPending && agent.remainingDistance < 0.5f)
         {
-            if (isWaiting)
-            {
-                Invoke(nameof(DisableWaiting), transitionDelay);
-                return;
-            }
             currentWaypoint = (currentWaypoint + 1) % waypoints.Length;
             isWaiting = true;
         }
