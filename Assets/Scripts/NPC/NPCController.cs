@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class NPCController : MonoBehaviour
 {
     public NPCType npcType = NPCType.Friendly;
+    public NPCClass npcClass = NPCClass.Ranged;
 
     [Header("General settings")]
     public Transform player;
@@ -20,7 +21,7 @@ public class NPCController : MonoBehaviour
     private Animator animator;
     private int currentWaypoint = 0;
     private bool isWaiting;
-
+    private string currentAnimation = "Idle";
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -47,10 +48,6 @@ public class NPCController : MonoBehaviour
         animator.Update(0);
     }
 
-    void LateUpdate()
-    {
-    }
-
     void FriendlyBehavior()
     {
         if (Vector3.Distance(transform.position, player.position) < chaseDistance)
@@ -73,10 +70,12 @@ public class NPCController : MonoBehaviour
 
         if (distanceToPlayer < chaseDistance && distanceToPlayer > minDistance)
         {
+            ChangeSpeed(5);
             agent.destination = player.position;
         }
         else if (distanceToPlayer <= minDistance)
         {
+            ChangeSpeed(0);
             agent.destination = transform.position;
         }
         else
@@ -88,6 +87,7 @@ public class NPCController : MonoBehaviour
 
     void Patrol()
     {
+        ChangeSpeed(3);
         if (waypoints.Length == 0)
             return;
         if (isWaiting)
@@ -106,6 +106,27 @@ public class NPCController : MonoBehaviour
     void DisableWaiting()
     {
         isWaiting = false;
+    }
+
+    void ChangeSpeed(float speed)
+    {
+        string newAnimation = speed switch
+        {
+            3 => "WalkForward",
+            5 => "BattleRunForward",
+            _ => "Idle"
+        };
+        if (currentAnimation == newAnimation)
+            return;
+        currentAnimation = newAnimation;
+        agent.speed = speed;
+        animator.SetFloat("speed", agent.velocity.magnitude);
+        if (speed == 0)
+        {
+            animator.StopAnimation();
+            return;
+        }
+        animator.PlayAnimation(currentAnimation);
     }
 }
   
