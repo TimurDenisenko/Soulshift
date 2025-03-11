@@ -11,7 +11,7 @@ public class NPCController : MonoBehaviour
     [Header("General settings")]
     public Transform player;
     public float minDistance = 10f;
-    public float chaseDistance = 20f; 
+    public float chaseDistance = 20f;
 
     [Header("Patrol settings")]
     public Transform[] waypoints;
@@ -75,8 +75,9 @@ public class NPCController : MonoBehaviour
         }
         else if (distanceToPlayer <= minDistance)
         {
-            ChangeSpeed(0);
             agent.destination = transform.position;
+            transform.LookAt(player.position);
+            StartAttack();
         }
         else
         {
@@ -95,7 +96,7 @@ public class NPCController : MonoBehaviour
             Invoke(nameof(DisableWaiting), transitionDelay);
             return;
         }
-        agent.destination = waypoints[currentWaypoint].position; 
+        agent.destination = waypoints[currentWaypoint].position;
         if (!agent.pathPending && agent.remainingDistance < 0.5f)
         {
             currentWaypoint = (currentWaypoint + 1) % waypoints.Length;
@@ -106,6 +107,34 @@ public class NPCController : MonoBehaviour
     void DisableWaiting()
     {
         isWaiting = false;
+    }
+
+    void StartAttack()
+    {
+        switch (npcClass)
+        {
+            case NPCClass.Melee:
+                break;
+            case NPCClass.Ranged:
+                RangeAttack();
+                break;
+            case NPCClass.Civilian:
+                break;
+            case NPCClass.QuestGiver:
+                break;
+            case NPCClass.Summoner:
+                break;
+            default:
+                break;
+        }
+    }
+
+    void RangeAttack()
+    {
+        if (currentAnimation == "SingleMagicAttack")
+            return;
+        currentAnimation = "SingleMagicAttack";
+        animator.PlayAnimation(currentAnimation);
     }
 
     void ChangeSpeed(float speed)
