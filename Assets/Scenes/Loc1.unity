@@ -641,6 +641,27 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2405188014618268607, guid: 89b6b179d612861499b0988cb156f8cb, type: 3}
   m_PrefabInstance: {fileID: 925531857}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &493075809
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493075808}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 20, y: 20, z: 20}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &602784345
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,10 +1022,14 @@ PrefabInstance:
       propertyPath: 'waypoints.Array.data[3]'
       value: 
       objectReference: {fileID: 290387823}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2709330753246995140, guid: 89b6b179d612861499b0988cb156f8cb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2405188014618268607, guid: 89b6b179d612861499b0988cb156f8cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 493075809}
   m_SourcePrefab: {fileID: 100100000, guid: 89b6b179d612861499b0988cb156f8cb, type: 3}
 --- !u!1 &1051627676
 GameObject:
