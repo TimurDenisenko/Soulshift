@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace Assets.Scripts.NPC
 {
@@ -23,12 +24,13 @@ namespace Assets.Scripts.NPC
             InteractionObjectAnimation.SetActive(true);
             initialZCoordinate = InteractionObject.transform.localPosition.z;
         }
+
         public void EndSingleMagicAttack()
         {
             InteractionObject.SetActive(false);
             InteractionObjectAnimation.SetActive(false);
         }
-
+        
         private void ChangeZCoordinate(float z, bool isAddition = false)
         {
             Vector3 pos = InteractionObject.transform.localPosition;

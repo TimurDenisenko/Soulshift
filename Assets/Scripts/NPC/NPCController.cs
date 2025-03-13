@@ -19,6 +19,7 @@ public class NPCController : MonoBehaviour
 
     private NavMeshAgent agent;
     private Animator animator;
+    private NPCAnimationEvent animationEvent;
     private int currentWaypoint = 0;
     private bool isWaiting;
     private string currentAnimation = "Idle";
@@ -26,6 +27,7 @@ public class NPCController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        animationEvent = GetComponent<NPCAnimationEvent>();
     }
 
     void Update()
@@ -70,6 +72,7 @@ public class NPCController : MonoBehaviour
 
         if (distanceToPlayer < chaseDistance && distanceToPlayer > minDistance)
         {
+            animationEvent.EndSingleMagicAttack();
             ChangeSpeed(5);
             agent.destination = player.position;
         }
