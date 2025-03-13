@@ -926,6 +926,26 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 972077361581325452, guid: 89b6b179d612861499b0988cb156f8cb, type: 3}
   m_PrefabInstance: {fileID: 925531857}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &859534847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3906075059962416102, guid: 89b6b179d612861499b0988cb156f8cb, type: 3}
+  m_PrefabInstance: {fileID: 925531857}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &859534854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859534847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f75b1ef0eb4f203468cf689e20463015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  defense: 1
+  attackPower: 20
 --- !u!1001 &925531857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -945,6 +965,10 @@ PrefabInstance:
     - target: {fileID: 2405188014618268607, guid: 89b6b179d612861499b0988cb156f8cb, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405188014618268607, guid: 89b6b179d612861499b0988cb156f8cb, type: 3}
+      propertyPath: m_TagString
+      value: AttackObject
       objectReference: {fileID: 0}
     - target: {fileID: 3906075059962416102, guid: 89b6b179d612861499b0988cb156f8cb, type: 3}
       propertyPath: m_Name
@@ -1027,6 +1051,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3906075059962416102, guid: 89b6b179d612861499b0988cb156f8cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 859534854}
     - targetCorrespondingSourceObject: {fileID: 2405188014618268607, guid: 89b6b179d612861499b0988cb156f8cb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 493075809}
@@ -2374,10 +2401,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9ad5b25e5fbf14ead660dc624f947a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 0
-  CurrentHealth: 0
-  Defense: 0
-  AttackPower: 0
+  maxHealth: 100
+  defense: 1.08
+  attackPower: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
