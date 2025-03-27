@@ -25,7 +25,6 @@ namespace Assets.Scripts.Player
             {
                 case "AttackObject":
                     CurrentHealth -= collision.gameObject.GetComponentInParent<Enemy>().AttackPower / Defense;
-                    Debug.Log(CurrentHealth);
                     return;
                 default:
                     return;
