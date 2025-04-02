@@ -9,9 +9,9 @@ public class PlayerMovement : MonoBehaviour
     public float jumpCooldown = 0.5f;
     public float airMultiplier = 0.5f;
     private bool readyToJump = true;
-    public float walkSpeed;
-    public float sprintSpeed;
-    public float crouchSpeed;
+    public float walkSpeed = 100f;
+    public float sprintSpeed = 150f;
+    public float crouchSpeed = 50f;
 
     [Header("Crouch Settings")]
     public float crouchHeight = 1f; // Desired collider height when crouched
@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Ground Check")]
     public Transform groundCheck;
-    public float groundDistance = 0.4f;
+    public float groundDistance = 0.7f;
     public LayerMask whatIsGround;
     private bool grounded;
 
@@ -63,18 +63,26 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        // Check if player is grounded using a sphere at groundCheck position
         grounded = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsGround);
 
         MyInput();
         SpeedControl();
         StateHandler();
 
+        // Apply ground drag if on ground, zero if in air
         rb.linearDamping = grounded ? groundDrag : 0;
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
+
+        // Optional downward force to keep player from "floating" on slopes
+        if (!grounded)
+        {
+            rb.AddForce(Vector3.down * 20f, ForceMode.Force);
+        }
     }
 
     private void MyInput()
@@ -82,8 +90,8 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        // Jumping
-        if (Input.GetKey(jumpKey) && readyToJump && grounded)
+        // Reworked Jump Logic: trigger once per key press
+        if (Input.GetKeyDown(jumpKey) && grounded && readyToJump)
         {
             readyToJump = false;
             Jump();
@@ -125,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void StateHandler()
     {
-        // Prioritize crouching state
+        // Crouching has priority
         if (Input.GetKey(crouchKey))
         {
             state = MovementState.crouching;
@@ -143,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.walking;
             moveSpeed = walkSpeed;
         }
-        // In Air
+        // Air
         else
         {
             state = MovementState.air;
@@ -152,8 +160,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
+        // Determine direction based on orientation
         moveDirection = (orientation.forward * verticalInput + orientation.right * horizontalInput).normalized;
 
+        // Apply different force if grounded or in air
         if (grounded)
             rb.AddForce(moveDirection * moveSpeed * 10f, ForceMode.Force);
         else
@@ -162,6 +172,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void SpeedControl()
     {
+        // Limit the player's speed to moveSpeed
         Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
         if (flatVel.magnitude > moveSpeed)
@@ -185,10 +196,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        // Visualize the ground check in Scene view
         if (groundCheck)
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(groundCheck.position, groundDistance);
         }
+    }
+
+    void OnGUI()
+    {
+        // Simple debug label to see if the player is grounded
+        GUI.Label(new Rect(10, 10, 200, 20), grounded ? "Grounded" : "Not Grounded");
     }
 }
