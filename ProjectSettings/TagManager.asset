@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - AttackObject
+  - InventorySlot
   layers:
   - Default
   - TransparentFX
