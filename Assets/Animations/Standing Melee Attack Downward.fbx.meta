@@ -1,12 +1,5 @@
 fileFormatVersion: 2
-guid: b8ee4ac441e79bf4992c286599544905
-AssetOrigin:
-  serializedVersion: 1
-  productId: 314095
-  packageName: Low Poly Axe Warrior - Customizable Humanoid
-  packageVersion: 1.0.1
-  assetPath: Assets/Axe Warrior/Model/Axe_Warrior.fbx
-  uploadId: 744721
+guid: 7d50b0e5064a49c48baca7b73e4da4c0
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -29,7 +22,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -986,11 +979,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
-  autoGenerateAvatarMappingIfUnspecified: 0
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: b8ee4ac441e79bf4992c286599544905, type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
