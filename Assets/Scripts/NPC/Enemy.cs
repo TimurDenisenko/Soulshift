@@ -16,5 +16,21 @@ namespace Assets.Scripts.NPC
         {
             CurrentHealth = maxHealth;
         }
+        private void OnTriggerEnter(Collider other)
+        {
+            switch (other.gameObject.tag)
+            {
+                case "AttackObject":
+                    Animator playerAnimator = other.gameObject.GetComponentInParent<Animator>();
+                    if (!playerAnimator.GetBool("Hit1") && !playerAnimator.GetBool("Hit2"))
+                        return;
+                    CurrentHealth -= other.gameObject.GetComponentInParent<Player.Player>().AttackPower / Defense;
+                    if (CurrentHealth < 1)
+                        Destroy(gameObject);
+                    return;
+                default:
+                    return;
+            }
+        }
     }
 }
